@@ -7,7 +7,8 @@ from google.oauth2.credentials import Credentials
 from googleapiclient.discovery import build
 from app.firebase.firebase_config import db
 
-load_dotenv()
+if os.path.exists(".env"):
+    load_dotenv()
 
 CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID")
 CLIENT_SECRET = os.getenv("GOOGLE_CLIENT_SECRET")
@@ -110,8 +111,8 @@ def create_calendar_event(uid: str, task: dict):
         token=data["googleAccessToken"],
         refresh_token=data["googleRefreshToken"],
         token_uri="https://oauth2.googleapis.com/token",
-        client_id=os.getenv("GOOGLE_CLIENT_ID"),
-        client_secret=os.getenv("GOOGLE_CLIENT_SECRET"),
+        client_id=os.getenviron["GOOGLE_CLIENT_ID"],
+        client_secret=os.getenviron["GOOGLE_CLIENT_SECRET"],
     )
 
     service = build("calendar", "v3", credentials=creds)

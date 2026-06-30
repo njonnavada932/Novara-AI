@@ -11,9 +11,13 @@ now = datetime.now()
 today = now.strftime("%Y-%m-%d")
 print(today)
 current_time = now.strftime("%H:%M")
-load_dotenv()
-print("Gemini Key =", os.getenv("GEMINI_API_KEY"))
-genai.configure(api_key=os.getenv("GEMINI_API_KEY"))
+# load_dotenv()
+if os.path.exists(".env"):
+    load_dotenv()
+
+GEMINI_API_KEY = os.environ["GEMINI_API_KEY"]
+
+genai.configure(api_key=GEMINI_API_KEY)
 
 model = genai.GenerativeModel("gemini-2.5-flash")
 

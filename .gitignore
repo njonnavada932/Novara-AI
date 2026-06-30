@@ -1,0 +1,25 @@
+# Node
+node_modules/
+dist/
+
+# Environment
+.env
+*.env
+
+# Backend env
+backend/.env
+src/.env
+
+# Firebase
+backend/firebase_key.json
+
+# Python
+__pycache__/
+*.pyc
+
+# VSCode
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
